@@ -15,22 +15,26 @@
     curl -XPOST 'http://localhost:9200/acxiom/user/9?pretty' -H 'Content-Type: application/json'  -d'{"name":"邱少云","age":30,"city":"南昌","gender":"男"}';
     curl -XPOST 'http://localhost:9200/acxiom/user/10?pretty' -H 'Content-Type: application/json'  -d'{"name":"邵琪","age":29,"city":"北京","gender":"女"}';
  
-# 运行
-    项目为Spring Boot 项目
-    修改resources中 application.properties文件
+# 启动
+
+### 源码运行
+ 
+项目为Spring Boot 项目
+修改resources中 application.properties文件
     
     server.port=8080 端口号
     
     # ES
     spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300 elasticsearch节点地址
     
-    修改完成之后直接运行com.acxiom.interview.WebApplication即可启动
+修改完成之后直接运行com.acxiom.interview.WebApplication即可启动
+    
+### jar包执行
+deploy目录中的jar可以执行执行 执行命令：java -jar -Dfile.encoding=UTF-8 acxiom-interview-1.0.0-SNAPSHOT.jar
+默认端口8080 
+默认elasticsearch节点 127.0.0.1:9300
     
-    http://localhost:8080
-    
-    deploy目录中的jar可以执行执行 执行命令：java -jar -Dfile.encoding=UTF-8 acxiom-interview-1.0.0-SNAPSHOT.jar
-    默认端口8080 
-    默认elasticsearch节点 127.0.0.1:9300
+http://localhost:8080 可访问表示启动成功
 
 # 测试用例
     curl -XPOST 'http://localhost:8080/user/search'  -d'query={"filter":[{"OR":[{"city":"南通"},{"city":"北京"}]},{"AND":[{"GTE":{"age":20}},{"LTE":{"age":41}}]},{"NOT":[{"gender":"男"}]}],"sort":[{"age":"asc"}],"offset":0,"rows":10}';
