@@ -22,15 +22,13 @@
 项目为Spring Boot 项目
 修改resources中 application.properties文件
     
-    server.port=8080 端口号
+    server.port=8080 #端口号
+    spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300 #elasticsearch节点地址
     
-    # ES
-    spring.data.elasticsearch.cluster-nodes = 127.0.0.1:9300 elasticsearch节点地址
-    
-修改完成之后直接运行com.acxiom.interview.WebApplication即可启动
+修改完成之后直接运行`com.acxiom.interview.WebApplication`即可启动
     
 ### jar包执行
-deploy目录中的jar可以执行执行 执行命令：java -jar -Dfile.encoding=UTF-8 acxiom-interview-1.0.0-SNAPSHOT.jar
+deploy目录中的jar可以执行执行 执行命令：`java -jar -Dfile.encoding=UTF-8 acxiom-interview-1.0.0-SNAPSHOT.jar`
 默认端口8080 
 默认elasticsearch节点 127.0.0.1:9300
     
