@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <property scope="context" name="LogFileNamePrefix" value="acxiom-interview" />
+
+    <property scope="context" name="LogFolder" value="logs" />
+    <property scope="context" name="LogLevel" value="INFO" />
+    <property scope="context" name="LogAppender" value="file" />
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LogFolder}/${LogFileNamePrefix}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LogFolder}/${LogFileNamePrefix}-%d{yyyy-MM-dd}.log</FileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root>
+        <level value="${LogLevel}"/>
+        <appender-ref ref="${LogAppender}"/>
+    </root>
+
+</configuration>

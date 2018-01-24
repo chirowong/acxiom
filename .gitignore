@@ -1,0 +1,7 @@
+*.iml
+build
+*.swp
+.idea
+.DS_Store
+target/
+logs/
